@@ -15,5 +15,5 @@ jobs:
         with:
           environment: QA
           test_tag: Regression
-          username: admin@test.com
+          username: cdro
         uses: ./.cloudbees/actions/test-and-reports
