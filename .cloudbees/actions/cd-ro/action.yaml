@@ -20,19 +20,10 @@ inputs:
 runs:
   using: composite
   steps:
-
-      - name: call cdro
-        uses: ./.cloudbees/actions/cd-ro
-        with:
-            environment: ${{ inputs.test_tag }}
-            test_tag: ${{ inputs.environment }}
-            username: ${{ inputs.username }}
-
       - name: Print details
         uses: docker://golang:1.20.3-alpine3.17
         shell: sh
         run: |
-          echo "Test Report"
           echo  "${{ inputs.test_tag }}"
           echo  "${{ inputs.environment }}"
           echo  "${{ inputs.username }}"
