@@ -22,6 +22,7 @@ runs:
   steps:
 
       - name: call cdro
+        if: ${{ inputs.username == 'cdro' }}
         uses: ./.cloudbees/actions/cd-ro
         with:
             environment: ${{ inputs.test_tag }}
@@ -29,6 +30,7 @@ runs:
             username: ${{ inputs.username }}
 
       - name: Print details
+        if: ${{ inputs.username == 'fm' }}
         uses: docker://golang:1.20.3-alpine3.17
         shell: sh
         run: |
