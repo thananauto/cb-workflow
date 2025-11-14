@@ -23,7 +23,7 @@ runs:
 
       - name: call cdro
         if: ${{ inputs.username == 'cdro' }}
-        uses: ./.cloudbees/actions/cd-ro
+        uses: ./.cloudbees/pods/cd-ro
         with:
             environment: ${{ inputs.test_tag }}
             test_tag: ${{ inputs.environment }}
