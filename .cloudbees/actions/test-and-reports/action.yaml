@@ -31,10 +31,8 @@ runs:
 
       - name: Print details
         if: ${{ inputs.username == 'fm' }}
-        uses: docker://golang:1.20.3-alpine3.17
-        shell: sh
-        run: |
-          echo "Test Report"
-          echo  "${{ inputs.test_tag }}"
-          echo  "${{ inputs.environment }}"
-          echo  "${{ inputs.username }}"
+        uses: ./.cloudbees/pods/fm
+        with:
+            environment: ${{ inputs.test_tag }}
+            test_tag: ${{ inputs.environment }}
+            username: ${{ inputs.username }}

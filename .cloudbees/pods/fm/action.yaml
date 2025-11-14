@@ -1,0 +1,29 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: action
+name: test-and-report-action
+description: "Run automated e2e tests and publish the results"
+
+inputs:
+  environment:
+    description: "Deployment environment for testing"
+    required: true
+
+  test_tag:
+    description: "Tag for filtering tests"
+    required: true
+  
+  username:
+    description: "Enter the username specific to features"
+    required: true
+
+
+runs:
+  using: composite
+  steps:
+      - name: Echo - FM - details
+        uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+        run: |
+          echo  "${{ inputs.test_tag }}"
+          echo  "${{ inputs.environment }}"
+          echo  "${{ inputs.username }}"
